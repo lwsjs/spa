@@ -1,0 +1,21 @@
+{
+  "name": "local-web-server-spa",
+  "author": "Lloyd Brookes <75pound@gmail.com>",
+  "version": "0.0.0",
+  "description": "spa",
+  "repository": "https://github.com/local-web-server/spa.git",
+  "license": "MIT",
+  "main": "./lib/spa.js",
+  "keywords": [],
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "tape test/*.js",
+    "docs": "jsdoc2md -t jsdoc2md/README.md lib/*.js > README.md; echo"
+  },
+  "dependencies": {
+    "koa-route": "^3.1.0",
+    "koa-send": "^2.0.2"
+  }
+}
