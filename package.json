@@ -3,7 +3,7 @@
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "0.0.0",
   "description": "spa",
-  "repository": "https://github.com/local-web-server/spa.git",
+  "repository": "https://github.com/lwsjs/spa.git",
   "license": "MIT",
   "main": "./lib/spa.js",
   "keywords": [],
