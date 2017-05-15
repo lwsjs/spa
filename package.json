@@ -5,8 +5,8 @@
   "description": "spa",
   "repository": "https://github.com/lwsjs/spa.git",
   "license": "MIT",
-  "main": "./lib/spa.js",
-  "keywords": [],
+  "main": "index",
+  "keywords": [ "lws", "lws-feature", "spa" ],
   "engines": {
     "node": ">=4"
   },
@@ -16,6 +16,6 @@
   },
   "dependencies": {
     "koa-route": "^3.2.0",
-    "koa-send": "^3.3.0"
+    "koa-send": "^4.1.0"
   }
 }
