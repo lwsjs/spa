@@ -1,7 +1,7 @@
-[![view on npm](http://img.shields.io/npm/v/lws-spa.svg)](https://www.npmjs.org/package/lws-spa)
-[![npm module downloads](http://img.shields.io/npm/dt/lws-spa.svg)](https://www.npmjs.org/package/lws-spa)
-[![Build Status](https://travis-ci.org/local-web-server/spa.svg?branch=master)](https://travis-ci.org/local-web-server/spa)
-[![Dependency Status](https://david-dm.org/local-web-server/spa.svg)](https://david-dm.org/local-web-server/spa)
+[![view on npm](https://img.shields.io/npm/v/lws-spa.svg)](https://www.npmjs.org/package/lws-spa)
+[![npm module downloads](https://img.shields.io/npm/dt/lws-spa.svg)](https://www.npmjs.org/package/lws-spa)
+[![Build Status](https://travis-ci.org/lwsjs/spa.svg?branch=master)](https://travis-ci.org/lwsjs/spa)
+[![Dependency Status](https://david-dm.org/lwsjs/spa.svg)](https://david-dm.org/lwsjs/spa)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 # lws-spa

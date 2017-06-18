@@ -1,7 +1,9 @@
 'use strict'
-const EventEmitter = require('events').EventEmitter
 
-class SPA extends EventEmitter {
+module.exports = MiddlewareBase => class SPA extends MiddlewareBase {
+  description () {
+    return 'Support for Single Page Applications.'
+  }
   optionDefinitions () {
     return [
       {
@@ -26,7 +28,7 @@ class SPA extends EventEmitter {
       const _ = require('koa-route')
       const root = path.resolve(options.directory || process.cwd())
       const assetTest = new RegExp(options['spa.asset-test'] || '\\.')
-      this.emit('start', { root, assetTest })
+      this.view.write('spa.config', { root, assetTest })
       return _.get('*', (ctx, route, next) => {
         if (ctx.accepts('text/html') && !assetTest.test(route)) {
           return send(ctx, spa, { root })
@@ -37,5 +39,3 @@ class SPA extends EventEmitter {
     }
   }
 }
-
-module.exports = SPA
