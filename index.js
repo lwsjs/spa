@@ -25,7 +25,7 @@ module.exports = MiddlewareBase => class SPA extends MiddlewareBase {
       const send = require('koa-send')
       const _ = require('koa-route')
       const root = path.resolve(options.directory || process.cwd())
-      const assetTest = new RegExp(options['spa.asset-test'] || '\\.')
+      const assetTest = new RegExp(options.spaAssetTest || '\\.')
       this.emit('verbose', 'middleware.spa.config', { spa, root, assetTest })
       return _.get('*', (ctx, route, next) => {
         if (ctx.accepts('text/html') && !assetTest.test(route)) {
