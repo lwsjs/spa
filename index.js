@@ -7,6 +7,7 @@ module.exports = MiddlewareBase => class SPA extends MiddlewareBase {
       {
         name: 'spa',
         type: String,
+        alias: 's',
         typeLabel: '[underline]{file}',
         description: 'Path to a Single Page App, e.g. app.html.'
       },

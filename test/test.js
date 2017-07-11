@@ -5,6 +5,8 @@ const request = require('req-then')
 const a = require('assert')
 const Static = require('lws-static')
 const url = require('url')
+const usage = require('lws/lib/usage')
+usage.disable()
 
 const runner = new TestRunner()
 
