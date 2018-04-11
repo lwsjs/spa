@@ -8,13 +8,13 @@ module.exports = MiddlewareBase => class SPA extends MiddlewareBase {
         name: 'spa',
         type: String,
         alias: 's',
-        typeLabel: '[underline]{file}',
+        typeLabel: '{underline file}',
         description: 'Path to a Single Page App, e.g. app.html.'
       },
       {
         name: 'spa.asset-test',
         type: String,
-        typeLabel: '[underline]{RegExp}',
+        typeLabel: '{underline RegExp}',
         description: 'A regular expression to identify an asset file. Defaults to "\\.".'
       }
     ]
