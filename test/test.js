@@ -1,16 +1,14 @@
-const TestRunner = require('test-runner')
+const Tom = require('test-runner').Tom
 const Spa = require('../')
 const Lws = require('lws')
 const request = require('req-then')
 const a = require('assert')
 const Static = require('lws-static')
 const url = require('url')
-const usage = require('lws/lib/usage')
-usage.disable()
 
-const runner = new TestRunner()
+const tom = module.exports = new Tom('spa')
 
-runner.test('simple', async function () {
+tom.test('simple', async function () {
   const port = 8000 + this.index
   const lws = new Lws()
   const server = lws.listen({

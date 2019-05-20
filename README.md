@@ -10,4 +10,4 @@ Middleware adding support for Single Page Applications to lws. For usage instruc
 
 * * *
 
-&copy; 2016-18 Lloyd Brookes <75pound@gmail.com>.
+&copy; 2016-19 Lloyd Brookes <75pound@gmail.com>.
