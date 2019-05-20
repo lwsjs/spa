@@ -16,6 +16,11 @@ module.exports = MiddlewareBase => class SPA extends MiddlewareBase {
         type: String,
         typeLabel: '{underline RegExp}',
         description: 'A regular expression to identify an asset file. Defaults to "\\.".'
+      },
+      {
+        name: 'spa.serve-existing',
+        description: 'Check if the requested file exists on disk, and if so, serve it as asset.\n' +
+          'If specified, `spa.asset-test` will be ignored.'
       }
     ]
   }
@@ -27,9 +32,14 @@ module.exports = MiddlewareBase => class SPA extends MiddlewareBase {
       const _ = require('koa-route')
       const root = path.resolve(options.directory || process.cwd())
       const assetTest = new RegExp(options.spaAssetTest || '\\.')
+      const fileExists = (file) => {
+        return require('fs').existsSync(root + file)
+      }
       this.emit('verbose', 'middleware.spa.config', { spa, root, assetTest })
       return _.get('*', (ctx, route, next) => {
-        if (ctx.accepts('text/html') && !assetTest.test(route)) {
+        if (ctx.accepts('text/html') &&
+          (!("spaServeExisting" in options) && !assetTest.test(route)) ||
+          (("spaServeExisting" in options) && !fileExists(route))) {
           return send(ctx, spa, { root })
         } else {
           return next()
