@@ -1,53 +1,52 @@
 const Tom = require('test-runner').Tom
-const Spa = require('../')
-const Lws = require('lws')
-const request = require('req-then')
+const fetch = require('node-fetch')
 const a = require('assert')
-const Static = require('lws-static')
-const url = require('url')
 
-const tom = module.exports = new Tom('spa')
+const tom = module.exports = new Tom('spa', { concurrency: 1 })
 
-tom.test('simple', async function () {
-  const port = 8000 + this.index
+let server
+const port = 8000
+
+tom.test('before', function () {
+  const Spa = require('../')
+  const Static = require('lws-static')
+  const Lws = require('lws')
   const lws = new Lws()
-  const server = lws.listen({
+  server = lws.listen({
     port,
     stack: [ Spa, Static ],
-    directory: 'test',
+    directory: 'test/fixture',
     spa: 'one.txt'
   })
+})
 
-  /* missing file redirects to spa */
-  const reqOptions = url.parse(`http://localhost:${port}/asdf`)
-  reqOptions.headers = {
-    accept: 'text/html'
-  }
-  const response = await request(reqOptions)
-  a.strictEqual(response.res.statusCode, 200)
-  a.ok(/one/.test(response.data.toString()))
+tom.test('missing file redirects to spa', async function () {
+  const headers = { accept: 'text/html' }
+  const response = await fetch(`http://localhost:${port}/asdf`, { headers })
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/one/.test(body))
+})
 
-  /* html requests for missing files with extensions do not redirect to spa */
-  const reqOptions2 = url.parse(`http://localhost:${port}/asdf.txt`)
-  reqOptions2.headers = {
-    accept: 'text/html'
-  }
-  const response2 = await request(reqOptions2)
-  a.strictEqual(response2.res.statusCode, 404)
+tom.test('html requests for missing files with extensions do not redirect to spa', async function () {
+  const headers = { accept: 'text/html' }
+  const response = await fetch(`http://localhost:${port}/asdf.txt`, { headers })
+  a.strictEqual(response.status, 404)
+})
 
-  /* existing static file */
-  const reqOptions3 = url.parse(`http://localhost:${port}/two.txt`)
-  const response3 = await request(reqOptions3)
-  a.strictEqual(response3.res.statusCode, 200)
-  a.ok(/two/.test(response3.data.toString()))
+tom.test('existing static file', async function () {
+  const response = await fetch(`http://localhost:${port}/two.txt`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/two/.test(body))
+})
 
-  /* not a text/html request - does not redirect to spa */
-  const reqOptions4 = url.parse(`http://localhost:${port}/asdf`)
-  reqOptions4.headers = {
-    accept: 'application/json'
-  }
-  const response4 = await request(reqOptions4)
-  a.strictEqual(response4.res.statusCode, 404)
+tom.test('not a text/html request - does not redirect to spa', async function () {
+  const headers = { accept: 'application/json' }
+  const response = await fetch(`http://localhost:${port}/asdf`, { headers })
+  a.strictEqual(response.status, 404)
+})
 
+tom.test('after', function () {
   server.close()
 })

@@ -23,7 +23,7 @@
   "devDependencies": {
     "lws": "^1.3.1",
     "lws-static": "^0.5.0",
-    "req-then": "^0.6.4",
+    "node-fetch": "^2.6.0",
     "test-runner": "^0.6.0"
   },
   "files": [
