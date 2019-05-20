@@ -17,7 +17,6 @@
     "test": "test-runner test/*.js"
   },
   "dependencies": {
-    "koa-route": "^3.2.0",
     "koa-send": "^4.1.3"
   },
   "devDependencies": {
