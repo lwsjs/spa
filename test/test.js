@@ -67,7 +67,7 @@ tom.test('after', function () {
   server.close()
 })
 
-tom.test('before serve-existing', function () {
+tom.test('before spaAssetTestFs', function () {
   const Spa = require('../')
   const Static = require('lws-static')
   const Lws = require('lws')
@@ -77,27 +77,11 @@ tom.test('before serve-existing', function () {
     stack: [ Spa, Static ],
     directory: 'test/fixture',
     spa: 'one.txt',
-    spaServeExisting: true
+    spaAssetTestFs: true
   })
 })
 
-tom.test('serveExisting: static asset without "." found', async function () {
-  const headers = { accept: 'text/html' }
-  const response = await fetch(`http://localhost:${port}/three`, { headers })
-  a.strictEqual(response.status, 200)
-  const body = await response.text()
-  a.ok(/three/.test(body))
-})
-
-tom.test('serveExisting: / returns spa', async function () {
-  const headers = { accept: 'text/html' }
-  const response = await fetch(`http://localhost:${port}/`, { headers })
-  a.strictEqual(response.status, 200)
-  const body = await response.text()
-  a.ok(/one/.test(body))
-})
-
-tom.test('serveExisting: missing file redirects to spa', async function () {
+tom.test('spaAssetTestFs: missing file redirects to spa', async function () {
   const headers = { accept: 'text/html' }
   const response = await fetch(`http://localhost:${port}/asdf`, { headers })
   a.strictEqual(response.status, 200)
@@ -105,6 +89,72 @@ tom.test('serveExisting: missing file redirects to spa', async function () {
   a.ok(/one/.test(body))
 })
 
-tom.test('after serve-existing', function () {
+tom.test('spaAssetTestFs: missing file redirects to spa, deep', async function () {
+  const headers = { accept: 'text/html' }
+  const response = await fetch(`http://localhost:${port}/dir/asdf`, { headers })
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/one/.test(body))
+})
+
+tom.test('spaAssetTestFs: / returns spa', async function () {
+  const headers = { accept: 'text/html' }
+  const response = await fetch(`http://localhost:${port}/`, { headers })
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/one/.test(body))
+})
+
+tom.test('spaAssetTestFs: static asset without "." found', async function () {
+  const headers = { accept: 'text/html' }
+  const response = await fetch(`http://localhost:${port}/three`, { headers })
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/three/.test(body))
+})
+
+tom.test('spaAssetTestFs: static asset without "." found, deep', async function () {
+  const headers = { accept: 'text/html' }
+  const response = await fetch(`http://localhost:${port}/dir/five`, { headers })
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/five/.test(body))
+})
+
+tom.test('spaAssetTestFs: html requests for missing files with extensions returns spa', async function () {
+  const headers = { accept: 'text/html' }
+  const response = await fetch(`http://localhost:${port}/asdf.txt`, { headers })
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/one/.test(body))
+})
+
+tom.test('spaAssetTestFs: existing static file', async function () {
+  const response = await fetch(`http://localhost:${port}/two.txt`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/two/.test(body))
+})
+
+tom.test('spaAssetTestFs: existing static file, deep', async function () {
+  const response = await fetch(`http://localhost:${port}/dir/four.txt`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/four/.test(body))
+})
+
+tom.test('spaAssetTestFs: not a text/html request - does not redirect to spa', async function () {
+  const headers = { accept: 'application/json' }
+  const response = await fetch(`http://localhost:${port}/asdf`, { headers })
+  a.strictEqual(response.status, 404)
+})
+
+tom.test('spaAssetTestFs: special characters in route', async function () {
+  const headers = { accept: 'application/json' }
+  const response = await fetch(encodeURI(`http://localhost:${port}/!"£$%^&*()_+}{#;/.,`), { headers })
+  a.strictEqual(response.status, 404)
+})
+
+tom.test('after spaAssetTestFs', function () {
   server.close()
 })
