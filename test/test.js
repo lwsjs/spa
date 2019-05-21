@@ -63,6 +63,13 @@ tom.test('not a text/html request - does not redirect to spa', async function ()
   a.strictEqual(response.status, 404)
 })
 
+tom.test('existing static file with querystring', async function () {
+  const response = await fetch(`http://localhost:${port}/two.txt?key=value`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/two/.test(body))
+})
+
 tom.test('after', function () {
   server.close()
 })
@@ -155,6 +162,13 @@ tom.test('spaAssetTestFs: special characters in route', async function () {
   a.strictEqual(response.status, 404)
 })
 
+tom.test('spaAssetTestFs: existing static file with querystring', async function () {
+  const response = await fetch(`http://localhost:${port}/two.txt?key=value`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/two/.test(body))
+})
+
 tom.test('after spaAssetTestFs', function () {
   server.close()
 })
@@ -214,6 +228,13 @@ tom.test('spaAssetTest: not a text/html request - does not redirect to spa', asy
   const headers = { accept: 'application/json' }
   const response = await fetch(`http://localhost:${port}/asdf`, { headers })
   a.strictEqual(response.status, 404)
+})
+
+tom.test('spaAssetTest: existing static file with querystring', async function () {
+  const response = await fetch(`http://localhost:${port}/two.txt?key=value`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/two/.test(body))
 })
 
 tom.test('after spaAssetTest', function () {
