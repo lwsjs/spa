@@ -7,7 +7,7 @@
 
 # lws-spa
 
-Middleware adding support for Single Page Applications to lws. For usage instructions, see [here](https://github.com/lwsjs/local-web-server/wiki/How-to-serve-a-Single-Page-Application-(SPA)).
+[lws](https://github.com/lwsjs/lws) middleware plugin adding support for Single Page Applications. For usage instructions, see [here](https://github.com/lwsjs/local-web-server/wiki/How-to-serve-a-Single-Page-Application-(SPA)).
 
 * * *
 
