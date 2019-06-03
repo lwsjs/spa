@@ -11,13 +11,13 @@ tom.test('before', function () {
   const Spa = require('../')
   const Static = require('lws-static')
   const Lws = require('lws')
-  const lws = new Lws()
-  server = lws.listen({
+  const lws = Lws.create({
     port,
     stack: [ Spa, Static ],
     directory: 'test/fixture',
     spa: 'one.txt'
   })
+  server = lws.server
 })
 
 tom.test('missing file redirects to spa', async function () {
@@ -78,14 +78,14 @@ tom.test('before spaAssetTestFs', function () {
   const Spa = require('../')
   const Static = require('lws-static')
   const Lws = require('lws')
-  const lws = new Lws()
-  server = lws.listen({
+  const lws = Lws.create({
     port,
     stack: [ Spa, Static ],
     directory: 'test/fixture',
     spa: 'one.txt',
     spaAssetTestFs: true
   })
+  server = lws.server
 })
 
 tom.test('spaAssetTestFs: missing file redirects to spa', async function () {
@@ -177,14 +177,14 @@ tom.test('before spaAssetTest', function () {
   const Spa = require('../')
   const Static = require('lws-static')
   const Lws = require('lws')
-  const lws = new Lws()
-  server = lws.listen({
+  const lws = Lws.create({
     port,
     stack: [ Spa, Static ],
     directory: 'test/fixture',
     spa: 'one.txt',
     spaAssetTest: 'txt'
   })
+  server = lws.server
 })
 
 tom.test('spaAssetTest: missing file redirects to spa', async function () {

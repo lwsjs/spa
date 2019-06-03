@@ -1,4 +1,6 @@
-module.exports = MiddlewareBase => class SPA extends MiddlewareBase {
+const EventEmitter = require('events')
+
+class SPA extends EventEmitter {
   description () {
     return 'Support for Single Page Applications.'
   }
@@ -57,3 +59,5 @@ module.exports = MiddlewareBase => class SPA extends MiddlewareBase {
     }
   }
 }
+
+module.exports = SPA
