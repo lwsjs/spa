@@ -8,6 +8,7 @@
   "main": "index",
   "keywords": [
     "lws",
+    "lws-middleware",
     "spa"
   ],
   "engines": {
@@ -21,9 +22,9 @@
     "koa-send": "^5.0.0"
   },
   "devDependencies": {
-    "coveralls": "^3.0.3",
-    "lws": "^2.0.0-7",
-    "lws-static": "^1.0.0",
+    "coveralls": "^3.0.4",
+    "lws": "^2.0.0",
+    "lws-static": "^1.1.1",
     "node-fetch": "^2.6.0",
     "nyc": "^14.1.1",
     "test-runner": "^0.6.0"

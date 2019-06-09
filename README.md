@@ -9,6 +9,18 @@
 
 [lws](https://github.com/lwsjs/lws) middleware plugin adding support for Single Page Applications. For usage instructions, see [here](https://github.com/lwsjs/local-web-server/wiki/How-to-serve-a-Single-Page-Application-(SPA)).
 
+Adds the following options to lws.
+
+```
+--spa, -s file                 Path to a Single Page App, e.g. app.html.
+--spa.asset-test RegExp        A regular expression to identify an asset file. Defaults to ".", meaning the
+                               server will only read from disk if the requested path contains a ".". This
+                               option is more efficient than `spa.asset-test-fs`.
+--spa.asset-test-fs            Use the filesystem to identify an asset file. If the file exists on disk,
+                               serve it else return the SPA. If specified, `spa.asset-test` will be ignored.
+                               This option is less efficient but more reliable than `spa.asset-test`.
+```
+
 * * *
 
-&copy; 2016-19 Lloyd Brookes <75pound@gmail.com>.
+&copy; 2016-19 Lloyd Brookes \<75pound@gmail.com\>.
