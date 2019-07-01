@@ -35,7 +35,7 @@ class SPA extends EventEmitter {
       const root = path.resolve(options.directory || process.cwd())
       this.emit('verbose', 'middleware.spa.config', { spa, root, spaAssetTest: options.spaAssetTest, spaAssetTestFs: options.spaAssetTestFs })
       return function (ctx, next) {
-        const route = ctx.request.url
+        const route = ctx.request.path
         let isStatic
         if (options.spaAssetTest) {
           const re = new RegExp(options.spaAssetTest)

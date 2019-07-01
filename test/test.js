@@ -7,7 +7,7 @@ const tom = module.exports = new Tom('spa', { concurrency: 1 })
 let server
 const port = 8000
 
-tom.test('before', function () {
+tom.test('before default asset test', function () {
   const Spa = require('../')
   const Static = require('lws-static')
   const Lws = require('lws')
@@ -70,7 +70,28 @@ tom.test('existing static file with querystring', async function () {
   a.ok(/two/.test(body))
 })
 
-tom.test('after', function () {
+tom.test('existing static file with querystring containing fullstop', async function () {
+  const response = await fetch(`http://localhost:${port}/two.txt?key=value.txt`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/two/.test(body))
+})
+
+tom.test('route with querystring, redirects to spa', async function () {
+  const response = await fetch(`http://localhost:${port}/login?key=value`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/one/.test(body))
+})
+
+tom.test('route with querystring containing fullstop, redirects to spa', async function () {
+  const response = await fetch(`http://localhost:${port}/login?key=value.txt`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/one/.test(body))
+})
+
+tom.test('after default asset test', function () {
   server.close()
 })
 
@@ -169,6 +190,27 @@ tom.test('spaAssetTestFs: existing static file with querystring', async function
   a.ok(/two/.test(body))
 })
 
+tom.test('spaAssetTestFs: existing static file with querystring containing fullstop', async function () {
+  const response = await fetch(`http://localhost:${port}/two.txt?key=value.txt`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/two/.test(body))
+})
+
+tom.test('spaAssetTestFs: route with querystring, redirects to spa', async function () {
+  const response = await fetch(`http://localhost:${port}/login?key=value`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/one/.test(body))
+})
+
+tom.test('spaAssetTestFs: route with querystring containing fullstop, redirects to spa', async function () {
+  const response = await fetch(`http://localhost:${port}/login?key=value.txt`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/one/.test(body))
+})
+
 tom.test('after spaAssetTestFs', function () {
   server.close()
 })
@@ -235,6 +277,27 @@ tom.test('spaAssetTest: existing static file with querystring', async function (
   a.strictEqual(response.status, 200)
   const body = await response.text()
   a.ok(/two/.test(body))
+})
+
+tom.test('spaAssetTest: existing static file with querystring containing "txt"', async function () {
+  const response = await fetch(`http://localhost:${port}/two.txt?key=value.txt`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/two/.test(body))
+})
+
+tom.test('spaAssetTest: route with querystring, redirects to spa', async function () {
+  const response = await fetch(`http://localhost:${port}/login?key=value`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/one/.test(body))
+})
+
+tom.test('spaAssetTest: route with querystring containing "txt", redirects to spa', async function () {
+  const response = await fetch(`http://localhost:${port}/login?key=value.txt`)
+  a.strictEqual(response.status, 200)
+  const body = await response.text()
+  a.ok(/one/.test(body))
 })
 
 tom.test('after spaAssetTest', function () {
