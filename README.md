@@ -23,4 +23,6 @@ Adds the following options to lws.
 
 * * *
 
-&copy; 2016-19 Lloyd Brookes \<75pound@gmail.com\>.
+&copy; 2016-20 Lloyd Brookes \<75pound@gmail.com\>.
+
+Tested by [test-runner](https://github.com/test-runner-js/test-runner).
