@@ -1,4 +1,7 @@
-const EventEmitter = require('events')
+import EventEmitter from 'events'
+import path from 'path'
+import fs from 'fs'
+import send from 'koa-send'
 
 class SPA extends EventEmitter {
   description () {
@@ -31,7 +34,6 @@ class SPA extends EventEmitter {
   middleware (options) {
     const spa = options.spa
     if (spa) {
-      const path = require('path')
       const root = path.resolve(options.directory || process.cwd())
       this.emit('verbose', 'middleware.spa.config', { spa, root, spaAssetTest: options.spaAssetTest, spaAssetTestFs: options.spaAssetTestFs })
       return function (ctx, next) {
@@ -41,8 +43,6 @@ class SPA extends EventEmitter {
           const re = new RegExp(options.spaAssetTest)
           isStatic = re.test(route)
         } else if (options.spaAssetTestFs && route !== '/') {
-          const fs = require('fs')
-          const URL = require('url').URL // required for node v8
           const url = new URL(route, 'http://localhost')
           const filePath = path.join(root, url.pathname)
           isStatic = fs.existsSync(filePath)
@@ -50,7 +50,6 @@ class SPA extends EventEmitter {
           isStatic = /\./.test(route)
         }
         if (ctx.accepts('text/html') && !isStatic) {
-          const send = require('koa-send')
           return send(ctx, spa, { root })
         } else {
           return next()
@@ -60,4 +59,4 @@ class SPA extends EventEmitter {
   }
 }
 
-module.exports = SPA
+export default SPA

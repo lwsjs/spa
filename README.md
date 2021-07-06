@@ -1,8 +1,9 @@
-[![view on npm](https://img.shields.io/npm/v/lws-spa.svg)](https://www.npmjs.org/package/lws-spa)
-[![npm module downloads](https://img.shields.io/npm/dt/lws-spa.svg)](https://www.npmjs.org/package/lws-spa)
-[![Build Status](https://travis-ci.org/lwsjs/spa.svg?branch=master)](https://travis-ci.org/lwsjs/spa)
-[![Dependency Status](https://badgen.net/david/dep/lwsjs/spa)](https://david-dm.org/lwsjs/spa)
-[![Coverage Status](https://coveralls.io/repos/github/lwsjs/spa/badge.svg)](https://coveralls.io/github/lwsjs/spa)
+[![view on npm](https://badgen.net/npm/v/lws-spa)](https://www.npmjs.org/package/lws-spa)
+[![npm module downloads](https://badgen.net/npm/dt/lws-spa)](https://www.npmjs.org/package/lws-spa)
+[![Gihub repo dependents](https://badgen.net/github/dependents-repo/lwsjs/lws-spa)](https://github.com/lwsjs/lws-spa/network/dependents?dependent_type=REPOSITORY)
+[![Gihub package dependents](https://badgen.net/github/dependents-pkg/lwsjs/lws-spa)](https://github.com/lwsjs/lws-spa/network/dependents?dependent_type=PACKAGE)
+[![Node.js CI](https://github.com/lwsjs/lws-spa/actions/workflows/node.js.yml/badge.svg)](https://github.com/lwsjs/lws-spa/actions/workflows/node.js.yml)
+[![Coverage Status](https://coveralls.io/repos/github/lwsjs/lws-spa/badge.svg)](https://coveralls.io/github/lwsjs/lws-spa)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 # lws-spa
@@ -23,6 +24,6 @@ Adds the following options to lws.
 
 * * *
 
-&copy; 2016-20 Lloyd Brookes \<75pound@gmail.com\>.
+&copy; 2016-21 Lloyd Brookes \<75pound@gmail.com\>.
 
 Tested by [test-runner](https://github.com/test-runner-js/test-runner).

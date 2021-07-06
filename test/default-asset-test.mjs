@@ -1,19 +1,20 @@
-const Tom = require('test-runner').Tom
-const fetch = require('node-fetch')
-const a = require('assert')
+import TestRunner from 'test-runner'
+import assert from 'assert'
+import fetch from 'node-fetch'
+import Spa from 'lws-spa'
+import Static from 'lws-static'
+import Lws from 'lws'
 
-const tom = module.exports = new Tom({ maxConcurrency: 1 })
+const a = assert.strict
+const tom = new TestRunner.Tom({ maxConcurrency: 1 })
 
 let server
 const port = 8010
 
-tom.before('before default asset test', function () {
-  const Spa = require('../')
-  const Static = require('lws-static')
-  const Lws = require('lws')
-  const lws = Lws.create({
+tom.before('before default asset test', async function () {
+  const lws = await Lws.create({
     port,
-    stack: [ Spa, Static ],
+    stack: [Spa, Static],
     directory: 'test/fixture',
     spa: 'one.txt'
   })
@@ -94,3 +95,5 @@ tom.test('route with querystring containing fullstop, redirects to spa', async f
 tom.after('after default asset test', function () {
   server.close()
 })
+
+export default tom
