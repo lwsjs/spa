@@ -16,17 +16,17 @@
   "exports": "./index.mjs",
   "scripts": {
     "test": "test-runner test/*.mjs",
-    "cover": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    "cover": "c8 npm test && c8 report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
     "koa-send": "^5.0.1"
   },
   "devDependencies": {
+    "c8": "^7.7.3",
     "coveralls": "^3.1.1",
     "lws": "^4.0.1",
     "lws-static": "^3.0.0",
     "node-fetch": "^2.6.1",
-    "nyc": "^15.1.0",
     "test-runner": "^0.9.6"
   },
   "files": [
