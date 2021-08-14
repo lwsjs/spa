@@ -3,7 +3,7 @@
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "4.0.0",
   "description": "Middleware adding support for Single Page Applications to lws",
-  "repository": "https://github.com/lwsjs/spa.git",
+  "repository": "https://github.com/lwsjs/spa",
   "license": "MIT",
   "keywords": [
     "lws",
@@ -11,7 +11,7 @@
     "spa"
   ],
   "engines": {
-    "node": ">=14"
+    "node": ">=12.17"
   },
   "exports": "./index.mjs",
   "scripts": {
@@ -22,12 +22,12 @@
     "koa-send": "^5.0.1"
   },
   "devDependencies": {
-    "c8": "^7.7.3",
+    "c8": "^7.8.0",
     "coveralls": "^3.1.1",
-    "lws": "^4.0.1",
-    "lws-static": "^3.0.0",
+    "lws": "^4.1.0",
+    "lws-static": "^3.1.0",
     "node-fetch": "^2.6.1",
-    "test-runner": "^0.9.6"
+    "test-runner": "^0.9.8"
   },
   "files": [
     "index.mjs"
