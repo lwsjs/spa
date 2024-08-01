@@ -3,7 +3,6 @@
 [![Gihub repo dependents](https://badgen.net/github/dependents-repo/lwsjs/spa)](https://github.com/lwsjs/spa/network/dependents?dependent_type=REPOSITORY)
 [![Gihub package dependents](https://badgen.net/github/dependents-pkg/lwsjs/spa)](https://github.com/lwsjs/spa/network/dependents?dependent_type=PACKAGE)
 [![Node.js CI](https://github.com/lwsjs/spa/actions/workflows/node.js.yml/badge.svg)](https://github.com/lwsjs/spa/actions/workflows/node.js.yml)
-[![Coverage Status](https://coveralls.io/repos/github/lwsjs/spa/badge.svg)](https://coveralls.io/github/lwsjs/spa)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 # lws-spa
@@ -24,6 +23,6 @@ Adds the following options to lws.
 
 * * *
 
-&copy; 2016-21 Lloyd Brookes \<75pound@gmail.com\>.
+&copy; 2016-24 Lloyd Brookes \<75pound@gmail.com\>.
 
 Tested by [test-runner](https://github.com/test-runner-js/test-runner).
